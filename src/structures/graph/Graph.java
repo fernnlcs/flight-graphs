@@ -13,7 +13,7 @@ public class Graph<Data extends Colorable<Data, ?>> {
         this.isOriented = true;
     }
 
-    public Graph(boolean isOriented) {
+    public Graph(final boolean isOriented) {
         this.isOriented = isOriented;
     }
 
@@ -21,7 +21,7 @@ public class Graph<Data extends Colorable<Data, ?>> {
         return vertices;
     }
 
-    public void setVertices(List<Vertice<Data>> vertices) {
+    public void setVertices(final List<Vertice<Data>> vertices) {
         this.vertices = vertices;
     }
 
@@ -29,18 +29,18 @@ public class Graph<Data extends Colorable<Data, ?>> {
         return edges;
     }
 
-    public void setEdges(List<Edge<Data>> edges) {
+    public void setEdges(final List<Edge<Data>> edges) {
         this.edges = edges;
     }
 
-    public Vertice<Data> addVertice(Data data) {
+    public Vertice<Data> addVertice(final Data data) {
         Vertice<Data> vertice = new Vertice<>(data);
         this.vertices.add(vertice);
 
         return vertice;
     }
 
-    public Edge<Data> addEdge(Double weight, Vertice<Data> origin, Vertice<Data> destiny) {
+    public Edge<Data> addEdge(final Double weight, final Vertice<Data> origin, final Vertice<Data> destiny) {
         Edge<Data> edge = new Edge<>(weight, origin, destiny);
         this.edges.add(edge);
 
@@ -62,7 +62,7 @@ public class Graph<Data extends Colorable<Data, ?>> {
                 if (vertice.getData().hasConflictWith(neighbor.getData())) {
                     addEdge(1.0, vertice, neighbor);
                     System.out.print("Conflito identificado: ");
-                    System.out.println(vertice.getData().identify() + " <---> " + neighbor.getData().identify());
+                    System.out.println(vertice.getData().identify() + " x " + neighbor.getData().identify());
                 }
             }
         }
@@ -75,7 +75,7 @@ public class Graph<Data extends Colorable<Data, ?>> {
         });
     }
 
-    public void resolveColors(List<?> possibilities) {
+    public void resolveColors(final List<?> possibilities) {
         final Color[] colors = Color.values();
 
         for (Vertice<Data> vertice : vertices) {

@@ -9,19 +9,19 @@ public class Flight extends Colorable<Flight, Instant> {
     private final int runway;
     private Instant takeoffDateTime;
 
-    public Flight(String destiny, int runway, Instant takeoffDateTime) {
+    public Flight(final String destiny, final int runway, final Instant takeoffDateTime) {
         this.destiny = destiny;
         this.runway = runway;
         this.takeoffDateTime = takeoffDateTime;
     }
 
     @Override
-    public boolean mayConflictWith(Flight other) {
+    public boolean mayConflictWith(final Flight other) {
         return runway == other.runway;
     }
 
     @Override
-    public boolean hasConflictWith(Flight other) {
+    public boolean hasConflictWith(final Flight other) {
         if (mayConflictWith(other)) {
             long difference = Math.abs(takeoffDateTime.toEpochMilli() - other.takeoffDateTime.toEpochMilli())
                     / 60000;
@@ -42,7 +42,7 @@ public class Flight extends Colorable<Flight, Instant> {
     }
 
     @Override
-    public void setColorInfo(Instant info) {
+    public void setColorInfo(final Instant info) {
         takeoffDateTime = info;
     }
 }

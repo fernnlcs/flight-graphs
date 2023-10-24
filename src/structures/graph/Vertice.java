@@ -9,7 +9,7 @@ public class Vertice<Data extends Colorable<Data, ?>> implements Comparable<Vert
     private final List<Edge<Data>> edgesIn = new ArrayList<>();
     private final List<Edge<Data>> edgesOut = new ArrayList<>();
     
-    public Vertice(Data data) {
+    public Vertice(final Data data) {
         this.data = data;
     }
 
@@ -17,7 +17,7 @@ public class Vertice<Data extends Colorable<Data, ?>> implements Comparable<Vert
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(final Data data) {
         this.data = data;
     }
 
@@ -25,7 +25,7 @@ public class Vertice<Data extends Colorable<Data, ?>> implements Comparable<Vert
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(final Color color) {
         this.color = color;
     }
 
@@ -37,11 +37,11 @@ public class Vertice<Data extends Colorable<Data, ?>> implements Comparable<Vert
         return edgesOut;
     }
 
-    public void addEdgeIn(Edge<Data> edge) {
+    public void addEdgeIn(final Edge<Data> edge) {
         this.edgesIn.add(edge);
     }
 
-    public void addEdgeOut(Edge<Data> edge) {
+    public void addEdgeOut(final Edge<Data> edge) {
         this.edgesOut.add(edge);
     }
 
@@ -58,7 +58,7 @@ public class Vertice<Data extends Colorable<Data, ?>> implements Comparable<Vert
     }
 
     @Override
-    public int compareTo(Vertice<Data> other) {
+    public int compareTo(final Vertice<Data> other) {
         return Integer.compare(other.edgesOut.size(), edgesOut.size());
     }
 }

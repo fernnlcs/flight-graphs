@@ -2,10 +2,10 @@ package structures.graph;
 
 public class Edge<Data extends Colorable<Data, ?>> {
     private Double weight;
-    private Vertice<Data> origin;
-    private Vertice<Data> destiny;
+    private final Vertice<Data> origin;
+    private final Vertice<Data> destiny;
     
-    public Edge(Double weight, Vertice<Data> origin, Vertice<Data> destiny) {
+    public Edge(final Double weight, final Vertice<Data> origin, final Vertice<Data> destiny) {
         this.weight = weight;
         this.origin = origin;
         this.destiny = destiny;
@@ -18,7 +18,7 @@ public class Edge<Data extends Colorable<Data, ?>> {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(final Double weight) {
         this.weight = weight;
     }
 

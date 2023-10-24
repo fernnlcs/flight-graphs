@@ -6,24 +6,24 @@ import structures.graph.Graph;
 import structures.graph.Vertice;
 
 public class App {
-    public static void main(String[] args) {
-        Graph<Flight> graph = new Graph<>(false);
+    public static void main(final String[] args) {
+        final Graph<Flight> graph = new Graph<>(false);
 
-        Instant initialDateTime = Instant.parse("2023-05-10T10:00:00Z");
+        final Instant initialDateTime = Instant.parse("2023-05-10T10:00:00Z");
 
-        graph.addVertice(new Flight("roma", 1, initialDateTime));
-        graph.addVertice(new Flight("madrid", 2, initialDateTime));
-        graph.addVertice(new Flight("saoPaulo", 1, initialDateTime));
-        graph.addVertice(new Flight("santiago", 2, initialDateTime));
-        graph.addVertice(new Flight("toquio", 1, initialDateTime));
-        graph.addVertice(new Flight("brasilia", 1, initialDateTime));
+        graph.addVertice(new Flight("Roma", 1, initialDateTime));
+        graph.addVertice(new Flight("Madrid", 2, initialDateTime));
+        graph.addVertice(new Flight("São Paulo", 1, initialDateTime));
+        graph.addVertice(new Flight("Santiago", 2, initialDateTime));
+        graph.addVertice(new Flight("Tóquio", 1, initialDateTime));
+        graph.addVertice(new Flight("Brasília", 1, initialDateTime));
         graph.identifyConflicts();
 
-        List<Instant> possibilities = List.of(
+        final List<Instant> possibilities = List.of(
             Instant.parse("2023-05-11T10:00:00Z"),
-            Instant.parse("2023-05-12T10:00:00Z"),
-            Instant.parse("2023-05-13T10:00:00Z"),
-            Instant.parse("2023-05-14T10:00:00Z")
+            Instant.parse("2023-05-12T09:00:00Z"),
+            Instant.parse("2023-05-13T12:30:00Z"),
+            Instant.parse("2023-05-14T14:00:00Z")
         );
 
         System.out.println();
@@ -31,9 +31,9 @@ public class App {
         associateWith(graph, possibilities);
     }
 
-    public static void associateWith(Graph<Flight> graph, List<Instant> possibilities) {
+    public static void associateWith(final Graph<Flight> graph, final List<Instant> possibilities) {
         System.out.println();
-        for (Vertice<Flight> vertice : graph.getVertices()) {
+        for (final Vertice<Flight> vertice : graph.getVertices()) {
             vertice.getData().associate(possibilities, vertice.getColor());
             System.out.print(vertice.getData().identify() + ": ");
             System.out.println(vertice.getData().getColorInfo().toString());
